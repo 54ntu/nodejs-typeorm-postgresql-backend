@@ -8,6 +8,7 @@ const AppDataSource = new DataSource({
     username: Envconfig.DB_USERNAME,
     password: Envconfig.DB_PASSWORD,
     database: Envconfig.DB_DATABASE,
+    entities: [__dirname + "/../entities/**/*.entity{.ts,.js}"],
 })
 
 

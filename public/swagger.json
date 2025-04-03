@@ -6,7 +6,151 @@
 		"parameters": {},
 		"requestBodies": {},
 		"responses": {},
-		"schemas": {},
+		"schemas": {
+			"MediaType": {
+				"enum": [
+					"CATEGORY_THUMBNAIL",
+					"FOOD_THUMBNAIL"
+				],
+				"type": "string"
+			},
+			"Media": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"deleteAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"name": {
+						"type": "string"
+					},
+					"mediaType": {
+						"$ref": "#/components/schemas/MediaType"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"deleteAt",
+					"updatedAt",
+					"name",
+					"mediaType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FoodSpicyness": {
+				"enum": [
+					"MILD",
+					"MEDIUM",
+					"SPICY",
+					"EXTRA_SPICY"
+				],
+				"type": "string"
+			},
+			"Category": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"deleteAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"name": {
+						"type": "string"
+					},
+					"thumbnail": {
+						"$ref": "#/components/schemas/Media"
+					},
+					"food": {
+						"$ref": "#/components/schemas/Food"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"deleteAt",
+					"updatedAt",
+					"name",
+					"thumbnail",
+					"food"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Food": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"deleteAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"name": {
+						"type": "string"
+					},
+					"price": {
+						"type": "number",
+						"format": "double"
+					},
+					"spicyness": {
+						"$ref": "#/components/schemas/FoodSpicyness"
+					},
+					"quantity": {
+						"type": "number",
+						"format": "double"
+					},
+					"image": {
+						"$ref": "#/components/schemas/Media"
+					},
+					"category": {
+						"$ref": "#/components/schemas/Category"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"deleteAt",
+					"updatedAt",
+					"name",
+					"price",
+					"spicyness",
+					"quantity",
+					"image",
+					"category"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
 		"securitySchemes": {}
 	},
 	"info": {
@@ -43,6 +187,46 @@
 				},
 				"security": [],
 				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Category"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"categoryName": {
+										"type": "string"
+									},
+									"file": {
+										"type": "string",
+										"format": "binary"
+									}
+								},
+								"required": [
+									"categoryName",
+									"file"
+								]
+							}
+						}
+					}
+				}
 			}
 		}
 	},

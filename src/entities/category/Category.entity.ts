@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, OneToOne } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from "typeorm";
 import { CommonEntity } from "../common/Common.entity";
 import { Media } from "../media/Media.entity";
 import { Food } from "../food/Food.entity";
@@ -11,6 +11,7 @@ export class Category extends CommonEntity {
 
 
     @OneToOne(() => Media)
+    @JoinColumn()
     thumbnail: Media
 
 

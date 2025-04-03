@@ -6,7 +6,6 @@ export enum MediaType {
     FOOD_THUMBNAIL = "FOOD_THUMBNAIL",
 }
 
-
 @Entity()
 export class Media extends CommonEntity {
     @Column()

@@ -7,14 +7,17 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts"
+    "start": "tsoa spec-and-routes && nodemon src/index.ts"
   },
   "dependencies": {
     "@tsoa/runtime": "^6.6.0",
+    "@types/swagger-ui-express": "^4.1.8",
     "dotenv": "^16.4.7",
     "pg": "^8.14.1",
     "reflect-metadata": "^0.2.2",
+    "swagger-ui-express": "^5.0.1",
     "ts-node-dev": "^2.0.0",
+    "tsoa": "^6.6.0",
     "typeorm": "^0.3.21",
     "typeorm-naming-strategies": "^4.1.0"
   },

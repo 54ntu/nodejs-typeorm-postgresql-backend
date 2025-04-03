@@ -6,9 +6,7 @@ import CategoryService from "../../services/category/Category.service";
 export class CategoryController extends Controller {
     @Get("/")
     async getCategory() {
-        return {
-            data: "hello"
-        }
+        return CategoryService.getAll()
     }
 
 

@@ -1,4 +1,4 @@
-import { Column, Entity } from "typeorm";
+import { AfterLoad, Column, Entity } from "typeorm";
 import { CommonEntity } from "../common/Common.entity";
 
 export enum MediaType {
@@ -13,4 +13,9 @@ export class Media extends CommonEntity {
 
     @Column()
     mediaType: MediaType
+
+    @AfterLoad()
+    _() {
+        this.name = `http://localhost:3000/uploads/category/${this.name}`
+    }
 }

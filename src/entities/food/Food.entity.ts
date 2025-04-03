@@ -19,6 +19,8 @@ export class Food extends CommonEntity {
     @Column({ type: "real" })
     price: number
 
+    @Column({ type: "simple-array" })
+    style: string[]
 
     @Column({ type: "enum", enum: FoodSpicyness })
     spicyness: FoodSpicyness

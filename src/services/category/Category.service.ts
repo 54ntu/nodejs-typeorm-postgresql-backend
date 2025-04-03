@@ -2,6 +2,13 @@ import { Category } from "../../entities/category/Category.entity";
 import { Media, MediaType } from "../../entities/media/Media.entity"
 
 class CategoryService {
+    async getAll() {
+        return await Category.find(
+            {
+                relations: ["thumbnail"]
+            }
+        )
+    }
     async create(categoryName: string, filename: string) {
         const thumbnail = new Media();
         thumbnail.name = filename
